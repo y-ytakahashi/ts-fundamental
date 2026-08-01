@@ -1,0 +1,34 @@
+@baseUrl = http://localhost:3000
+
+### ヘルスチェック
+GET {{baseUrl}}/
+
+### 生徒の新規登録
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "テスト太郎",
+  "email": "test1@example.com",
+  "password": "password123"
+}
+
+### 生徒の新規登録（重複メールアドレス → 409になるはず）
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "テスト次郎",
+  "email": "test1@example.com",
+  "password": "password456"
+}
+
+### 生徒の新規登録（バリデーションエラー → 400になるはず）
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "invalid-email",
+  "password": "123"
+}
