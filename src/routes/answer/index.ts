@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { answerController } from '../../controller/answer/index.js';
+import { submitAnswerHandler } from '../../controller/answer/index.js';
 
 const router = Router();
 // 回答を登録
-router.post('/answer', answerController);
+router.post('/answer', submitAnswerHandler);
 
 export default router;

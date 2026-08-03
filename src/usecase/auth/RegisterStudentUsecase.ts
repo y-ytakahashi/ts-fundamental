@@ -1,7 +1,7 @@
-import type { RegisterInput } from '../controller/auth/validator.js';
+import type { RegisterInput } from '../../controller/auth/validator.js';
 import argon from 'argon2';
-import { prisma } from '../db/index.js';
-import { EmailAlreadyExistsError } from './errors.js';
+import { prisma } from '../../db/index.js';
+import { EmailAlreadyExistsError } from '../errors.js';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 
 export async function registerStudent(input: RegisterInput) {

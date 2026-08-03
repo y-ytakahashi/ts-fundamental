@@ -1,6 +1,6 @@
-import { prisma } from '../db/index.js';
-import type { SubmittedAnswerInput } from '../controller/answer/validator.js';
-import { AppError } from './errors.js';
+import { prisma } from '../../db/index.js';
+import type { SubmittedAnswerInput } from '../../controller/answer/validator.js';
+import { AppError } from '../errors.js';
 import { constants } from 'node:http2';
 
 export async function submitAnswer(input: SubmittedAnswerInput) {

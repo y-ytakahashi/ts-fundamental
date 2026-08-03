@@ -1,7 +1,7 @@
 import { registerSchema } from './validator.js';
 import { type Request, type Response } from 'express';
 import z from 'zod';
-import { registerStudent } from '../../usecase/RegisterStudentUsecase.js';
+import { registerStudent } from '../../usecase/auth/RegisterStudentUsecase.js';
 
 export async function registerController(req: Request, res: Response) {
   const parsed = registerSchema.safeParse(req.body);
