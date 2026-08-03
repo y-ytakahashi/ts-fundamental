@@ -1,5 +1,7 @@
 import express, { type Express, type Request, type Response } from 'express';
 import authRouter from './routes/auth/index.js';
+import problemRouter from './routes/problem/index.js';
+import { errorHandler } from './handler/error.js';
 
 const app: Express = express();
 
@@ -12,5 +14,11 @@ app.use(express.json());
 
 // 認証関連（生徒の新規登録など）
 app.use('/api/auth', authRouter);
+
+// 出題問題の追加
+app.use('/api', problemRouter);
+
+// エラーハンドリングミドルウェア
+app.use(errorHandler);
 
 app.listen(3000);

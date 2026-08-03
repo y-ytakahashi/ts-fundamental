@@ -32,3 +32,23 @@ Content-Type: application/json
   "email": "invalid-email",
   "password": "123"
 }
+
+### 問題の作成
+POST {{baseUrl}}/api/problem
+Content-Type: application/json
+
+{
+  "title": "1+1は？",
+  "body": "1+1の計算結果を答えてください。",
+  "correctAnswer": "2"
+}
+
+### 問題の作成（バリデーションエラー → 400になるはず）
+POST {{baseUrl}}/api/problem
+Content-Type: application/json
+
+{
+  "title": "",
+  "body": "",
+  "correctAnswer": ""
+}
