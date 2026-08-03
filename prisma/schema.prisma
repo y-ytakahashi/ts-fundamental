@@ -19,4 +19,26 @@ model Student {
   passwordHash String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  answers     Answer[]
+}
+
+model Problem {
+  id            String   @id @default(uuid())
+  title         String
+  body          String
+  correctAnswer String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  answers       Answer[]
+}
+
+model Answer {
+  id              String   @id @default(uuid())
+  studentId       String
+  problemId       String
+  submittedAnswer String
+  isCorrect       Boolean
+  answeredAt      DateTime @default(now())
+  student         Student  @relation(fields: [studentId], references: [id])
+  problem         Problem  @relation(fields: [problemId], references: [id])
 }
