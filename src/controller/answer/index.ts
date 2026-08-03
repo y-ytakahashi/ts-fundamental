@@ -1,9 +1,10 @@
 import { type Request, type Response } from 'express';
 import z from 'zod';
 import { submittedAnswerSchema } from './validator.js';
-import { submitAnswer } from '../../usecase/SubmitAnswerUsecase.js';
+import { submitAnswer } from '../../usecase/answer/SubmitAnswerUsecase.js';
+import { listStudentAnswers } from '../../usecase/answer/ListStudentAnswersUsecase.js';
 
-export async function answerController(req: Request, res: Response) {
+export async function submitAnswerHandler(req: Request, res: Response) {
   const parsed = submittedAnswerSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(400).send({ error: z.treeifyError(parsed.error) });

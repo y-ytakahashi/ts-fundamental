@@ -1,7 +1,7 @@
 import { problemSchema } from './validator.js';
 import { type Request, type Response } from 'express';
 import z from 'zod';
-import { createProblem } from '../../usecase/CreateProblemUsecase.js';
+import { createProblem } from '../../usecase/problem/CreateProblemUsecase.js';
 
 export async function problemController(req: Request, res: Response) {
   const parsed = problemSchema.safeParse(req.body);
