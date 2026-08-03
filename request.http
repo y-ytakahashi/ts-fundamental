@@ -52,3 +52,44 @@ Content-Type: application/json
   "body": "",
   "correctAnswer": ""
 }
+
+### 回答の送信（正解 → isCorrect: trueになるはず）
+# studentId/problemIdは上記の登録・作成リクエストのレスポンスに含まれるidに置き換えること
+POST {{baseUrl}}/api/answer
+Content-Type: application/json
+
+{
+  "studentId": "e2ed28e1-f2fc-4da6-b0b7-f570b05eb538",
+  "problemId": "PROBLEM_IDに置き換え",
+  "submittedAnswer": "2"
+}
+
+### 回答の送信（不正解 → isCorrect: falseになるはず）
+POST {{baseUrl}}/api/answer
+Content-Type: application/json
+
+{
+  "studentId": "e2ed28e1-f2fc-4da6-b0b7-f570b05eb538",
+  "problemId": "PROBLEM_IDに置き換え",
+  "submittedAnswer": "3"
+}
+
+### 回答の送信（存在しないproblemId → 404になるはず）
+POST {{baseUrl}}/api/answer
+Content-Type: application/json
+
+{
+  "studentId": "e2ed28e1-f2fc-4da6-b0b7-f570b05eb538",
+  "problemId": "00000000-0000-0000-0000-000000000000",
+  "submittedAnswer": "2"
+}
+
+### 回答の送信（バリデーションエラー → 400になるはず）
+POST {{baseUrl}}/api/answer
+Content-Type: application/json
+
+{
+  "studentId": "e2ed28e1-f2fc-4da6-b0b7-f570b05eb538",
+  "problemId": "92cb1c4a-10a7-450e-8406-8b680700b686",
+  "submittedAnswer": ""
+}
