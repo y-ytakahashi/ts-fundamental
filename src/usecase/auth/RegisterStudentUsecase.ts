@@ -7,6 +7,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 export async function registerStudent(input: RegisterInput) {
   const hashPassword = await argon.hash(input.password);
   try {
+    // TODO(Week2): Prisma直呼び。StudentRepository経由に切り出す対象
     const student = await prisma.student.create({
       data: {
         name: input.name,
